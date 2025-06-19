@@ -17,13 +17,8 @@ function MenuDropdown() {
 
         {/* Menu Dropdown */}
             {isOpen && (
-                <div className="absolute w-[15vw] h-full left-0 top-12">
+                <div className="absolute left-0 top-10">
                     <Sidebar />
-                </div>
-            )}
-            {!isOpen && (
-                <div className="absolute left-0 top-12">
-                    <MainSidebar />
                 </div>
             )}
         </div>

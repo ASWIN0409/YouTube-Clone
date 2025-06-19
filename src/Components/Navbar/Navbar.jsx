@@ -4,24 +4,30 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import Dropdown from '../Dropdown/Dropdown';
 import MenuDropdown from '../Dropdown/MenuDropdown';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
+import { useNavigate } from 'react-router-dom';
 
 function Navbar() {
-    return (
-        <nav className="flex items-center justify-between w-full h-16 border-b-[1px]">
-            {/* left section  */}
 
+    const navigate = useNavigate();
+
+    function handleClick() {
+        navigate("/");
+    }
+    
+    return (
+        <nav className="flex sticky top-0 left-0 bg-black items-center justify-between w-full h-16 border-b-[1px]">
+            {/* left section  */}
             <div className="flex w-[20%] justify-start items-center gap-x-10 px-1">
                 <div className='p-2 rounded-full cursor-pointer hover:bg-gray-800'>
                     <MenuDropdown />
                 </div>
-                <div className="flex items-center h-12 cursor-pointer gap-x-2"> 
+                <div onClick={handleClick} className="flex items-center h-12 cursor-pointer gap-x-2"> 
                     <YouTubeIcon />
                     <p className='text-3xl font-fantasy'>YouTube</p>
                 </div>
             </div>
 
             {/* middle section */}
-
             <div className="flex w-[40%] justify-between items-center">
                 <div className="flex w-[90%] relative items-center">
                     <input className="w-full h-10 p-4 border bg-gray-950 rounded-3xl " type="text" placeholder="Search..." />
@@ -33,7 +39,6 @@ function Navbar() {
             </div>
 
             {/* right section */}
-
             <div className="flex items-center justify-end gap-x-5  w-[15%] ">
                 <div className='p-2 cursor-pointer hover:bg-gray-800 rounded-3xl'>
                     <Dropdown />

@@ -4,7 +4,7 @@ import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 
 function MainSidebar() {
     return (
-        <div className='w-[5vw]'>
+        <div className='w-[8vw] h-screen mt-2 p-2 bg-black flex-1'>
             <div className='flex flex-col items-center justify-center h-20 gap-2 p-2 rounded-xl hover:bg-gray-800'>
                 <HomeIcon />
                 <p>Home</p>

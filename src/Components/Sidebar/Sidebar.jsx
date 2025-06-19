@@ -24,7 +24,7 @@ import FeedbackIcon from '@mui/icons-material/Feedback';
 
 function Sidebar() {
     return (
-        <div className='overflow-scroll'>
+        <div className='h-screen w-[15vw] bg-black z-10 overflow-scroll'>
             {/* first section */}
             <div className='mt-2 border-b-2 border-gray-600 '>
                 <div className='flex gap-5 p-2 m-1 rounded-xl hover:bg-gray-800'>
@@ -85,7 +85,7 @@ function Sidebar() {
                     <div className='w-7 h-7'>
                         <img className='w-full h-full rounded-full' src="ashish.png" alt="" />
                     </div>
-                    <p>ashish chanchlani...</p>
+                    <p>Ashish Chanchlani</p>
                 </div>
                 <div className='flex gap-5 p-2 m-1 rounded-xl hover:bg-gray-800'>
                     <div className='w-7 h-7'>
