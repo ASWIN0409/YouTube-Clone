@@ -17,7 +17,7 @@ function MenuDropdown() {
 
         {/* Menu Dropdown */}
             {isOpen && (
-                <div className="absolute left-0 top-10">
+                <div className="absolute top-10">
                     <Sidebar />
                 </div>
             )}

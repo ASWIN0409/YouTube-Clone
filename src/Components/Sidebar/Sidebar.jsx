@@ -20,211 +20,191 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import FlagIcon from '@mui/icons-material/Flag';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import FeedbackIcon from '@mui/icons-material/Feedback';
+import SidebarButton from '../Button/SidebarButton/SidebarButton';
+import SidebarButton2 from '../Button/SidebarButton/SidebarButton2';
 
 
 function Sidebar() {
     return (
-        <div className='h-screen w-[15vw] bg-black z-10 overflow-scroll'>
+        <div className='h-screen w-[15vw] bg-black p-2 z-10 overflow-scroll'>
             {/* first section */}
             <div className='mt-2 border-b-2 border-gray-600 '>
-                <div className='flex gap-5 p-2 m-1 rounded-xl hover:bg-gray-800'>
-                    <HomeIcon />
-                    <p>Home</p>
-                </div>
-                <div className='flex gap-5 p-2 m-1 rounded-xl der hover:bg-gray-800'>
-                    <img className='w-[22px] h-[22px] ' src="shorts2.png" />
+                <SidebarButton
+                    icon={HomeIcon}
+                    buttonText="Home"
+                />
+                <div className='flex gap-5 p-2 m-1 items-center active:bg-[#1a1a1a88] rounded-lg hover:bg-[#1a1a1a]'>
+                    <img className='w-[20px] h-[18px]'src="shorts2.png" />
                     <p>Shorts</p>
                 </div>
-                <div className='flex gap-5 p-2 m-1 rounded-xl hover:bg-gray-800'>
-                    <SubscriptionsIcon />
-                    <p>Subscriptions</p>
-                </div>
+                <SidebarButton
+                    icon={SubscriptionsIcon}
+                    buttonText="Subscriptions"
+                />
             </div>
 
             {/* second section */}
             <div className='mt-2 border-b-2 border-gray-600'>
-                <div className='flex gap-5 p-2 m-1 rounded-xl hover:bg-gray-800'>
+                <div className='flex gap-5 p-2 rounded-xl active:bg-[#1a1a1a88] hover:bg-[#1a1a1a]'>
                     You
                 </div>
-                <div className='flex gap-5 p-2 m-1 rounded-xl hover:bg-gray-800'>
-                    <HistoryIcon />
-                    <p>History</p>
-                </div>
-                <div className='flex gap-5 p-2 m-1 rounded-xl hover:bg-gray-800'>
-                    <PlaylistPlayIcon />
-                    <p>Playlists</p>
-                </div>
-                <div className='flex gap-5 p-2 m-1 rounded-xl hover:bg-gray-800'>
-                    <OndemandVideoIcon />
-                    <p>Your Videos</p>
-                </div>
-                <div className='flex gap-5 p-2 m-1 rounded-xl hover:bg-gray-800'>
-                    <LocalMoviesSharpIcon />
-                    <p>Your Movies</p>
-                </div>
-                <div className='flex gap-5 p-2 m-1 rounded-xl hover:bg-gray-800'>
-                    <SchoolSharpIcon />
-                    <p>Your Courses</p>
-                </div>
-                <div className='flex gap-5 p-2 m-1 rounded-xl hover:bg-gray-800'>
-                    <WatchLaterSharpIcon />
-                    <p>Watch Later</p>
-                </div>
-                <div className='flex gap-5 p-2 m-1 rounded-xl hover:bg-gray-800'>
-                    <ThumbUpAltSharpIcon />
-                    <p>Liked Videos</p>
-                </div>
+                <SidebarButton
+                    icon={HistoryIcon}
+                    buttonText="History"
+                />
+                <SidebarButton
+                    icon={PlaylistPlayIcon}
+                    buttonText="Playlists"
+                />
+                <SidebarButton
+                    icon={OndemandVideoIcon}
+                    buttonText="Your Videos"
+                />
+                <SidebarButton
+                    icon={LocalMoviesSharpIcon}
+                    buttonText="Your Movies"
+                />
+                <SidebarButton
+                    icon={SchoolSharpIcon}
+                    buttonText="Your Courses"
+                />
+                <SidebarButton
+                    icon={WatchLaterSharpIcon}
+                    buttonText="Watch Later"
+                />
+                <SidebarButton
+                    icon={ThumbUpAltSharpIcon}
+                    buttonText="Liked Videos"
+                />
             </div>
 
             {/* third section */}
             <div className='mt-2 border-b-2 border-gray-600'>
-                <div className='flex gap-5 p-2 m-1 rounded-xl'>
+                <div className='flex gap-5 p-2 m-1'>
                     Subscriptions
                 </div>
-                <div className='flex gap-5 p-2 m-1 rounded-xl hover:bg-gray-800'>
-                    <div className='w-7 h-7'>
-                        <img className='w-full h-full rounded-full' src="ashish.png" alt="" />
-                    </div>
-                    <p>Ashish Chanchlani</p>
-                </div>
-                <div className='flex gap-5 p-2 m-1 rounded-xl hover:bg-gray-800'>
-                    <div className='w-7 h-7'>
-                        <img className='w-full h-full rounded-full' src="akashgupta.jpg" alt="" />
-                    </div>
-                    <p>Aakash Gupta</p>
-                </div>
-                <div className='flex gap-5 p-2 m-1 rounded-xl hover:bg-gray-800'>
-                    <div className='w-7 h-7'>
-                        <img className='w-full h-full rounded-full' src="bb.webp" alt="" />
-                    </div>
-                    <p>BB Ki Vines</p>
-                </div>
-                <div className='flex gap-5 p-2 m-1 rounded-xl hover:bg-gray-800'>
-                    <div className='w-7 h-7'>
-                        <img className='w-full h-full rounded-full' src="r2h.jpg" alt="" />
-                    </div>
-                    <p>Round2hell</p>
-                </div>
-                <div className='flex gap-5 p-2 m-1 rounded-xl hover:bg-gray-800'>
-                    <div className='w-7 h-7'>
-                        <img className='w-full h-full rounded-full' src="blood.jpg" alt="" />
-                    </div>
-                    <p>Bloodwork Gaming</p>
-                </div>
-                <div className='flex gap-5 p-2 m-1 rounded-xl hover:bg-gray-800'>
-                    <div className='w-7 h-7'>
-                        <img className='w-full h-full rounded-full' src="abhishek.webp" alt="" />
-                    </div>
-                    <p>Abhishek Upmanyu</p>
-                </div>
-                <div className='flex gap-5 p-2 m-1 rounded-xl hover:bg-gray-800'>
-                    <div className='w-7 h-7'>
-                        <img className='w-full h-full rounded-full' src="mortal.jpg" alt="" />
-                    </div>
-                    <p>MortaL</p>
-                </div>
+                <SidebarButton2
+                    imgSrc="ashish.png"
+                    buttonText="Ashish Chanchlani"
+                />
+                <SidebarButton2
+                    imgSrc="akashgupta.jpg"
+                    buttonText="Aakash Gupta"
+                />
+                <SidebarButton2
+                    imgSrc="bb.webp"
+                    buttonText="BB Ki Vines"
+                />
+                <SidebarButton2
+                    imgSrc="r2h.jpg"
+                    buttonText="Round2hell"
+                />
+                <SidebarButton2
+                    imgSrc="blood.jpg"
+                    buttonText="Bloodwork Gaming"
+                />
+                <SidebarButton2
+                    imgSrc="abhishek.webp"
+                    buttonText="Abhishek Upmanyu"
+                />
+                <SidebarButton2
+                    imgSrc="mortal.jpg"
+                    buttonText="MortaL"
+                />
             </div>
 
             {/* fourth section */}
             <div className='mt-2 border-b-2 border-gray-600'>
-                <div className='flex gap-5 p-2 m-1 rounded-xl'>
+                <div className='flex gap-5 p-2 m-1 rounded-lg'>
                     Explore
                 </div>
-                <div className='flex gap-5 p-2 m-1 rounded-xl hover:bg-gray-800'>
-                    <WhatshotSharpIcon />
-                    <p>Trending</p>
-                </div>
-                <div className='flex gap-5 p-2 m-1 rounded-xl hover:bg-gray-800'>
-                    <ShoppingCartIcon />
-                    <p>Shopping</p>
-                </div>
-                <div className='flex gap-5 p-2 m-1 rounded-xl hover:bg-gray-800'>
-                    <MusicNoteSharpIcon />
-                    <p>Music</p>
-                </div>
-                <div className='flex gap-5 p-2 m-1 rounded-xl hover:bg-gray-800'>
-                    <LocalMoviesSharpIcon />
-                    <p>Films</p>
-                </div>
-                <div className='flex gap-5 p-2 m-1 rounded-xl hover:bg-gray-800'>
-                    <SportsRoundedIcon />
-                    <p>Live</p>
-                </div>
-                <div className='flex gap-5 p-2 m-1 rounded-xl hover:bg-gray-800'>
-                    <SportsEsportsRoundedIcon />
-                    <p>Gaming</p>
-                </div>
-                <div className='flex gap-5 p-2 m-1 rounded-xl hover:bg-gray-800'>
-                    <NewspaperRoundedIcon />
-                    <p>News</p>
-                </div>
-                <div className='flex gap-5 p-2 m-1 rounded-xl hover:bg-gray-800'>
-                    <EmojiEventsRoundedIcon />
-                    <p>Sport</p>
-                </div>
-                <div className='flex gap-5 p-2 m-1 rounded-xl hover:bg-gray-800'>
-                    <SchoolSharpIcon />
-                    <p>Courses</p>
-                </div>
-                <div className='flex gap-5 p-2 m-1 rounded-xl hover:bg-gray-800'>
-                    <CheckroomRoundedIcon />
-                    <p>Fashion & Beauty</p>
-                </div>
-                <div className='flex gap-5 p-2 m-1 rounded-xl hover:bg-gray-800'>
-                    <PodcastsRoundedIcon />
-                    <p>Podcasts</p>
-                </div>
+                <SidebarButton
+                    icon={WhatshotSharpIcon}
+                    buttonText="Trending"
+                />
+                <SidebarButton
+                    icon={ShoppingCartIcon}
+                    buttonText="Shopping"
+                />
+                <SidebarButton
+                    icon={MusicNoteSharpIcon}
+                    buttonText="Music"
+                />
+                <SidebarButton
+                    icon={LocalMoviesSharpIcon}
+                    buttonText="Films"
+                />
+                <SidebarButton
+                    icon={SportsRoundedIcon}
+                    buttonText="Live"
+                />
+                <SidebarButton
+                    icon={SportsEsportsRoundedIcon}
+                    buttonText="Gaming"
+                />
+                <SidebarButton
+                    icon={NewspaperRoundedIcon}
+                    buttonText="News"
+                />
+                <SidebarButton
+                    icon={EmojiEventsRoundedIcon}
+                    buttonText="Sport"
+                />
+                <SidebarButton
+                    icon={SchoolSharpIcon}
+                    buttonText="Courses"
+                />
+                <SidebarButton
+                    icon={CheckroomRoundedIcon}
+                    buttonText="Fashion & Beauty"
+                />
+                <SidebarButton
+                    icon={PodcastsRoundedIcon}
+                    buttonText="Podcasts"
+                />
             </div>
 
             {/* fifth section */}
             <div className='mt-2 border-b-2 border-gray-600'>
-                <div className='flex gap-5 p-2 m-1 rounded-xl'>
+                <div className='flex gap-5 p-2 m-1 rounded-lg'>
                     More from YouTube
                 </div>
-                <div className='flex gap-5 p-2 m-1 rounded-xl hover:bg-gray-800'>
-                    <div className='w-7 h-7'>
-                        <img className='w-full h-full rounded-full' src="youtube.png" alt="" />
-                    </div>
-                    <p>YouTube Premium</p>
-                </div>
-                <div className='flex gap-5 p-2 m-1 rounded-xl hover:bg-gray-800'>
-                    <div className='w-7 h-7'>
-                        <img className='w-full h-full rounded-full' src="youtube_studio.webp" alt="" />
-                    </div>
-                    <p>YouTube Studio</p>
-                </div>
-                <div className='flex gap-5 p-2 m-1 rounded-xl hover:bg-gray-800'>
-                    <div className='w-7 h-7'>
-                        <img className='w-full h-full rounded-full' src="youtube_music2.png" alt="" />
-                    </div>
-                    <p>YouTube Music</p>
-                </div>
-                <div className='flex gap-5 p-2 m-1 rounded-xl hover:bg-gray-800'>
-                    <div className='w-7 h-7'>
-                        <img className='w-full h-full rounded-full' src="youtube_kids.webp" alt="" />
-                    </div>
-                    <p>YouTube Kids</p>
-                </div>
+                <SidebarButton2
+                    imgSrc="youtube.png"
+                    buttonText="YouTube Premium"
+                />
+                <SidebarButton2
+                    imgSrc="youtube_studio.webp"
+                    buttonText="YouTube Studio"
+                />
+                <SidebarButton2
+                    imgSrc="Youtube-Music-Logo.png"
+                    buttonText="YouTube Music"
+                />
+                <SidebarButton2
+                    imgSrc="youtube_kids.webp"
+                    buttonText="YouTube Kids"
+                />
             </div>
 
             {/* sixth section */}
             <div className='mt-2 border-b-2 border-gray-600'>
-                <div className='flex gap-5 p-2 m-1 rounded-xl hover:bg-gray-800'>
-                    <SettingsIcon />
-                    <p>Settings</p>
-                </div>
-                <div className='flex gap-5 p-2 m-1 rounded-xl hover:bg-gray-800'>
-                    <FlagIcon />
-                    <p>Report History</p>
-                </div>
-                <div className='flex gap-5 p-2 m-1 rounded-xl hover:bg-gray-800'>
-                    <HelpOutlineIcon />
-                    <p>Help</p>
-                </div>
-                <div className='flex gap-5 p-2 m-1 rounded-xl hover:bg-gray-800'>
-                    <FeedbackIcon />
-                    <p>Send Feedback</p>
-                </div>
+                <SidebarButton
+                    icon={SettingsIcon}
+                    buttonText="Settings"
+                />
+                <SidebarButton
+                    icon={FlagIcon}
+                    buttonText="Report History"
+                />
+                <SidebarButton
+                    icon={HelpOutlineIcon}
+                    buttonText="Help"
+                />
+                <SidebarButton
+                    icon={FeedbackIcon}
+                    buttonText="Send Feedback"
+                />
             </div>
 
         </div>

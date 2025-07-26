@@ -1,154 +1,95 @@
-import Card from "../Components/Card/Card";
+import { useQuery } from "@tanstack/react-query";
+import fetchFeedVideos from "../Services/fetchFeedVideos";
+import { formatDistanceToNow } from "date-fns";
+import { useEffect, useState } from "react";
+import { API_KEY } from "../Helpers/apiKey";
+import { axiosInstance } from "../Helpers/axiosInstance";
 
 function Feed() {
+
+    // to fetch data
+    const { data, isLoading, isError, error } = useQuery({
+        queryKey: ["videos"],
+        queryFn: fetchFeedVideos,
+        cacheTime: 1000 * 60 * 2,
+        staleTime: 1000 * 60 * 2,
+    });
+
+    const videos = data?.items || [];
+
+    // function to format the views count 
+    function formatViewCount(views) {
+        views = Number(views);
+
+        if (views >= 1_000_000_000) {
+            return (views / 1_000_000_000).toFixed(1).replace(/\.0$/, '') + 'B';
+        } else if (views >= 1_000_000) {
+            return (views / 1_000_000).toFixed(1).replace(/\.0$/, '') + 'M';
+        } else if (views >= 1_000) {
+            return (views / 1_000).toFixed(1).replace(/\.0$/, '') + 'K';
+        } else {
+            return views.toString();
+        }
+    }
+
+    // function to format the time the video was uploaded
+    function getTimeAgo(dateString) {
+        return formatDistanceToNow(new Date(dateString), { addSuffix: true });
+    }
+
+    const [channelImages, setChannelImages] = useState({}); // state to hold channel images
+
+    // function to fetch channel image for each channels
+    async function fetchChannelImage(channelId) {
+        if (channelImages[channelId]) return;
+        try {
+            const response = await axiosInstance.get(`/channels?part=snippet&id=${channelId}&key=${API_KEY}`);
+            const imageUrl = response.data.items[0].snippet.thumbnails.default.url;
+
+            setChannelImages(prev => ({
+                ...prev,
+                [channelId]: imageUrl,
+            }));
+        } catch (error) {
+            console.error("Error", error.message);
+        }
+    }
+
+    useEffect(() => {
+        videos.forEach(video => {
+            fetchChannelImage(video.snippet.channelId);
+        });
+    }, [videos]);
+
+    if (isLoading) return <div>Loading...</div>
+    if (isError) return <div> Error: {error}</div>
+
     return (
-        <div className="w-[92vw] flex flex-wrap h-full mx-auto p-4 ">
-
-            <Card
-                imageUrl="thumbnail0.png"
-                imageUrl2="krafton.jpg"
-                title="[HINDI] realme BGIS 2025 | WILDCARD | Day 3"
-                channelName="KRAFTON INDIA ESPORTS"
-                views="79k"
-                time="2 hours ago"
-            />
-            <Card
-                imageUrl="thumbnail2.png"
-                imageUrl2="museasia.jpg"
-                title="【Complete Series】 The Greatest Demon Lord Is Reborn as a Typical Nobody"
-                channelName="Muse Asia"
-                views="5.7k"
-                time="3 hours ago"
-            />
-            <Card
-                imageUrl="thumbnail3.png"
-                imageUrl2="mortallogo.jpg"
-                title="CHALLENGING THEM TO ACT LIKE ME !!"
-                channelName="MortaL"
-                views="79k"
-                time="4 hours ago"
-            />
-            <Card
-                imageUrl="thumbnail4.png"
-                imageUrl2="akashgupta.jpg"
-                title="Sarojini Nagar | Excuse Me Brother | Stand-Up Comedy by Aakash Gupta"
-                channelName="Aakash Gupta"
-                views="39M"
-                time="4 years ago"
-            />
-            <Card
-                imageUrl="thumbnail5.png"
-                imageUrl2="abhay.jpg"
-                title="How to Learn Mind Reading Art | BIG ANNOUNCEMENT Only for few People😳"
-                channelName="Abhay magic"
-                views="552k"
-                time="4 months ago"
-            />
-            <Card
-                imageUrl="thumbnail6.png"
-                imageUrl2="abhisheklogo.jpg"
-                title="Besharam | Stand-Up Comedy by Abhishek Upmanyu"
-                channelName="Abhishek Upmanyu"
-                views="35M"
-                time="6 years ago"
-            />
-            <Card
-                imageUrl="thumbnail7.png"
-                imageUrl2="badallogo.jpg"
-                title="Anime with Official Hindi dub... You can *Legally* watch in India 😉"
-                channelName="Anime Cloud"
-                views="1.4M"
-                time="2 years ago"
-            />
-            <Card
-                imageUrl="thumbnail8.png"
-                imageUrl2="bynlogo.jpg"
-                title="BYN : College Romance"
-                channelName="Be YouNick"    
-                views="3M"
-                time="2 years ago"
-            />
-            <Card
-                imageUrl="thumbnail9.png"
-                imageUrl2="dhruvlogo.jpg"
-                title="How did Life begin on Earth? | Mystery of our Origin | Dhruv Rathee"
-                channelName="Dhruv Rathee"
-                views="7.3M"
-                time="1 month ago"
-            />  
-            <Card
-                imageUrl="thumbnail0.png"
-                imageUrl2="krafton.jpg"
-                title="[HINDI] realme BGIS 2025 | WILDCARD | Day 3"
-                channelName="KRAFTON INDIA ESPORTS"
-                views="79k"
-                time="2 hours ago"
-            />
-            <Card
-                imageUrl="thumbnail2.png"
-                imageUrl2="museasia.jpg"
-                title="【Complete Series】 The Greatest Demon Lord Is Reborn as a Typical Nobody"
-                channelName="Muse Asia"
-                views="5.7k"
-                time="3 hours ago"
-            />
-            <Card
-                imageUrl="thumbnail3.png"
-                imageUrl2="mortallogo.jpg"
-                title="CHALLENGING THEM TO ACT LIKE ME !!"
-                channelName="MortaL"
-                views="79k"
-                time="4 hours ago"
-            />
-            <Card
-                imageUrl="thumbnail4.png"
-                imageUrl2="akashgupta.jpg"
-                title="Sarojini Nagar | Excuse Me Brother | Stand-Up Comedy by Aakash Gupta"
-                channelName="Aakash Gupta"
-                views="39M"
-                time="4 years ago"
-            />
-            <Card
-                imageUrl="thumbnail5.png"
-                imageUrl2="abhay.jpg"
-                title="How to Learn Mind Reading Art | BIG ANNOUNCEMENT Only for few People😳"
-                channelName="Abhay magic"
-                views="552k"
-                time="4 months ago"
-            />
-            <Card
-                imageUrl="thumbnail6.png"
-                imageUrl2="abhisheklogo.jpg"
-                title="Besharam | Stand-Up Comedy by Abhishek Upmanyu"
-                channelName="Abhishek Upmanyu"
-                views="35M"
-                time="6 years ago"
-            />
-            <Card
-                imageUrl="thumbnail7.png"
-                imageUrl2="badallogo.jpg"
-                title="Anime with Official Hindi dub... You can *Legally* watch in India 😉"
-                channelName="Anime Cloud"
-                views="1.4M"
-                time="2 years ago"
-            />
-            <Card
-                imageUrl="thumbnail8.png"
-                imageUrl2="bynlogo.jpg"
-                title="BYN : College Romance"
-                channelName="Be YouNick"    
-                views="3M"
-                time="2 years ago"
-            />
-            <Card
-                imageUrl="thumbnail9.png"
-                imageUrl2="dhruvlogo.jpg"
-                title="How did Life begin on Earth? | Mystery of our Origin | Dhruv Rathee"
-                channelName="Dhruv Rathee"
-                views="7.3M"
-                time="1 month ago"
-            /> 
-
+        <div className="grid items-center justify-center w-full h-full grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
+            {videos.map((video) => (
+                <div
+                    className="flex flex-col justify-center gap-2 p-2"
+                    key={video.id}>
+                    <img
+                        className="object-cover w-[500px] h-[250px] rounded-xl"
+                        src={video.snippet.thumbnails.medium.url}
+                        alt={video.snippet.title}
+                    />
+                    <div className="flex gap-2">
+                        <img
+                            src={channelImages[video.snippet.channelId]}
+                            className="rounded-full w-9 h-9"
+                        />
+                        <h4 className="font-bold text-gray-200">{video.snippet.title}</h4>
+                    </div>
+                    <div className="ml-12">
+                        <h2 className="text-gray-400">{video.snippet.channelTitle}</h2>
+                        <div className="flex gap-2">
+                            <p className="text-sm text-gray-400">{formatViewCount(video.statistics.viewCount)} &bull; {getTimeAgo(video.snippet.publishedAt)}</p>
+                        </div>
+                    </div>
+                </div>
+            ))}
         </div>
     );
 }

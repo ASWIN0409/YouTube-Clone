@@ -4,8 +4,13 @@ import Feed from "../Feed/Feed";
 function HomePage() {
   return (
     <div className="flex w-full h-full">
-      <MainSidebar />
-      <Feed />
+      <div className="basis-[2%]">
+        <MainSidebar />
+      </div>
+      <div className="basis-[98%]">
+        <Feed />
+      </div>
+
     </div>
   );
 }
