@@ -65,7 +65,7 @@ function Feed() {
     if (isError) return <div> Error: {error}</div>
 
     return (
-        <div className="grid items-center justify-center w-full h-full grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid items-center justify-center w-full h-full grid-cols-1 gap-2 p-4 md:grid-cols-2 lg:grid-cols-3">
             {videos.map((video) => (
                 <div
                     className="flex flex-col justify-center gap-2 p-2"
