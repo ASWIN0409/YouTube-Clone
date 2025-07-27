@@ -29,8 +29,6 @@ import { GlobalContext } from '../../Context/GlobalContext';
 function Sidebar() {
 
     const { isOpen } = useContext(GlobalContext);
-    console.log(isOpen);
-
 
     return (
         <div>
@@ -55,7 +53,7 @@ function Sidebar() {
 
                 </div>
                 :
-                <div className='h-screen w-[15vw] bg-black p-2 z-10 overflow-scroll'>
+                <div className='h-screen w-[16vw] bg-black p-2 z-10 overflow-y-scroll '>
                     {/* first section */}
                     <div className='mt-2 border-b-2 border-gray-600 '>
                         <SidebarButton
