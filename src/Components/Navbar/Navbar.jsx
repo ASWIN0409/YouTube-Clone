@@ -41,6 +41,7 @@ function Navbar() {
                     <SearchIcon fontSize='large' className="mr-2 rounded-full cursor-pointer" />
                 </div>
                 <NavbarIconButton
+                className="p-2 rounded-full cursor-pointer active:bg-[#1a1a1a88] hover:bg-[#444444] bg-[#1a1a1a]"
                     icon={KeyboardVoiceIcon}
                 />
             </div>

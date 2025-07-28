@@ -20,7 +20,7 @@ function FeedCard({ video, videos }) {
         }
     }
 
-    // function to format the time the video was uploaded
+    // function to format the time ago the video was uploaded
     function getTimeAgo(dateString) {
         return formatDistanceToNow(new Date(dateString), { addSuffix: true });
     }
